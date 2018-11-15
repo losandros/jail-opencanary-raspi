@@ -27,6 +27,11 @@ sudo iptables -P FORWARD ACCEPT
 # netfilter network address translation
 iptables -t nat -A POSTROUTING -o eth0 -s 10.10.20.0/24  -j MASQUERADE
 
+# host port xx forwarded to sandbox port 20xx
+iptables -t nat -A PREROUTING -p tcp --dport 21 -j DNAT --to 10.10.20.10:2021
+iptables -t nat -A PREROUTING -p tcp --dport 22 -j DNAT --to 10.10.20.10:2022
+iptables -t nat -A PREROUTING -p tcp --dport 5000 -j DNAT --to 10.10.20.10:5000
+
 # Start jailed opencanary
 firejail --profile=/etc/firejail/opencanary.profile --private-dev --net=br0 --netfilter=/etc/firejail/opencanary.net /home/pi/canary-env/bin/opencanaryd --dev
 
