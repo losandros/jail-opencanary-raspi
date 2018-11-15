@@ -1,10 +1,10 @@
 # jail-opencanary-raspi
 Jailing opencanary-raspi edition with firejail
 
-apt install bridge-utils firejail
-Remove all sudo statements within portscan.py module
-create iptables rules manually with iptables-save and put them to /etc/firejail/opencanary.net
-create opencanary.profile
+- apt install bridge-utils firejail
+- Remove all sudo statements within portscan.py module
+- create iptables rules manually with iptables-save and put them to /etc/firejail/opencanary.net
+- create opencanary.profile
 
 create bridge interface for networking
 
